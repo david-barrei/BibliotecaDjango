@@ -15,9 +15,11 @@ class Lector(models.Model):
 
 class Prestamo(models.Model):
    lector = models.ForeignKey(Lector, on_delete=models.CASCADE)
-   libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
+   libro = models.ForeignKey(Libro, on_delete=models.CASCADE, related_name='libro_prestamo')
    fecha_devolucion = models.DateField(blank=True, null=True)
    devuelto = models.BooleanField()
 
    def __str__(self):
        return self.libro.titulo
+   
+   

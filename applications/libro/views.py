@@ -37,3 +37,5 @@ class LibroDetailView(DetailView):
     model = Libro
     template_name = 'libro/detalle.html'
     
+
+    
