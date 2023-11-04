@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models import Q
 
 class LibroManager(models.Manager):
-    # Managers para el modelo autor
+    # Managers para el modelo libro
 
     def listar_libros(self, kword):
 
@@ -27,5 +27,15 @@ class LibroManager(models.Manager):
 
         return self.filter(categoria__id=categoria).order_by('titulo')
 
+    def add_autor_libro(self, libro_id, autor): # para agregar un nuevo autor
+        libro = self.get(id=libro_id)
+        libro.autores.add(autor)
+        return libro
 
+class CategoriaManager(models.Manager):
+    # Managers para el modelo autor
+
+    def categoria_por_autor(self, autor):
+
+        return self.filter(categoria_libro__autores__id=autor).distinct() # para listar libros por autores
 

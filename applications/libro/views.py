@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from typing import Any
 from django.db.models.query import QuerySet
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView
 # Create your views here.
 
 from .models import Libro
@@ -32,3 +32,8 @@ class ListLibros2(ListView):
     def get_queryset(self): 
        
         return Libro.objects.listar_libros_categoria('4')
+    
+class LibroDetailView(DetailView):
+    model = Libro
+    template_name = 'libro/detalle.html'
+    
