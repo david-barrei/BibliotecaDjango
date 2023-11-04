@@ -3,13 +3,15 @@
 <p>
     <form method="GET"> {% csrf_token %}
     <input type="text" id = "kword" name="kword" placeholder="ingrese nombre">
+    <input type="date" name= "fecha1" id='fecha1' >
+    <input type="date" name= "fecha2" id='fecha2' >
     <button type = "submit"> Consultar </button>
 </p>
 
 
 <ul>
-    {% for e in lista_autores %}
-        <li> {{ e.nombre }} - {{e.apellidos}}</li>
+    {% for e in lista_libros %}
+        <li> {{ e.titulo }} - {{e.fecha}}</li>
     {% endfor %}
 
 </ul>

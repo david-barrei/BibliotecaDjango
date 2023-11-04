@@ -8,7 +8,7 @@ class Categoria(models.Model):
     nombre = models.CharField( max_length=50)
 
     def __str__(self):
-        return self.nombre
+        return str(self.id) +'-' + self.nombre
     
 class Libro(models.Model):
    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
@@ -21,5 +21,5 @@ class Libro(models.Model):
    objects = LibroManager()
 
    def __str__(self):
-       return self.Libro
+       return self.titulo + ' - ' +  str(self.fecha)
 

@@ -1,0 +1,10 @@
+
+<h1> Lista Autores </h1>
+
+
+<ul>
+    {% for e in lista_libros %}
+        <li> {{ e.titulo }} - {{e.fecha}}</li>
+    {% endfor %}
+
+</ul>
