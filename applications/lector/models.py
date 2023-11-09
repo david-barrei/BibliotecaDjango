@@ -5,10 +5,10 @@ from .managers import PrestamoManager
 # Create your models here.
 
 class Lector(models.Model):
-    nombre = models.CharField( max_length=50)
+    nombres = models.CharField( max_length=50)
     apellidos = models.CharField(max_length=50)
     nacionalidad = models.CharField(max_length=25)
-    edad = models.IntegerField(default=0)
+    edad =models.PositiveBigIntegerField()
 
     def __str__(self):
         return  str(self.id) + '-' + self.nombre + '-' + self.apellidos
