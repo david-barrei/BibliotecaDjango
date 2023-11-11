@@ -25,10 +25,10 @@ class Persona(models.Model):
     def __str__(self):
         return self.full_name
     
-class Empleados(Persona):
+class Empleados(Persona): #Hereda de el Modelo Persona
     empleo = models.CharField('Empleado', max_length=50)
 
-class Cliente(Persona):
+class Cliente(Persona): #Hereda de el modelo Persona
     email = models.CharField('Email', max_length=50)
 
 
