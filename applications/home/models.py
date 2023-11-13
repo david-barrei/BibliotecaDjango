@@ -27,10 +27,10 @@ class Persona(models.Model):
     
 class Empleados(Persona): #Hereda de el Modelo Persona
     empleo = models.CharField('Empleado', max_length=50)
-
+#Persona 1
 class Cliente(Persona): #Hereda de el modelo Persona
     email = models.CharField('Email', max_length=50)
-
+#Perona 1
 
 
 
