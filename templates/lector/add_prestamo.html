@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Mi Sitio Web</title>
+    <!-- Puedes agregar enlaces a tus estilos CSS o scripts aquí -->
+</head>
+<body>
+
+ <form method= "POST"> {% csrf_token %}
+    {{ form.as_p}}
+    <button type="Submit">Guardar</button>
+ </form>
+
+</body>
+</html>
+
+
