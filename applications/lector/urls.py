@@ -4,7 +4,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('lector/add', views.RegistarPrestamo.as_view(), name="prestamo-add"),
+    path('lector/add', views.AddPrestamo.as_view(), name="prestamo-add"),
    
 ]
 

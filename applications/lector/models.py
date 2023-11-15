@@ -22,6 +22,11 @@ class Prestamo(models.Model):
 
    objects = PrestamoManager()
 
+   def save(self, *args, **kwargs):
+        self.libro.stock = self.libro.stock -1 #Desminuir stock
+        self.libro.save()
+        super(Prestamo, self).save(*args, **kwargs)
+
    def __str__(self):
        return  str(self.id) + '-' + self.libro.titulo
    
