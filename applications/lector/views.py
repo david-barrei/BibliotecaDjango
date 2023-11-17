@@ -2,7 +2,7 @@ from datetime import date
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import FormView
-from .forms import PrestamoForm
+from .forms import PrestamoForm,  MultiplePrestamoForm
 from .models import Prestamo
 # Create your views here.
 
@@ -44,3 +44,29 @@ class AddPrestamo(FormView):
             return super(AddPrestamo, self).form_valid(form)
         else:
             return HttpResponseRedirect('/')
+        
+class AddMultiplePrestamo(FormView):
+    template_name = 'lector/add_multiple_prestamo.html'
+    form_class = MultiplePrestamoForm
+    success_url = '.'
+
+    def form_valid(self, form):
+       
+        print(form.cleaned_data['lector'])
+        print(form.cleaned_data['libros'])
+
+        prestamos = []
+        for l in form.cleaned_data['libros']: # Un solo guardado para nuestro modelo de checkbox
+            prestamo = Prestamo(
+                lector=form.cleaned_data['lector'],
+                libro=l,
+                fecha_devolucion=date.today(),
+                devuelto=False
+            )
+            prestamos.append(prestamo)
+
+        Prestamo.objects.bulk_create( #crea registros en una sola consulta
+            prestamos 
+
+        )
+        return super(RegistarPrestamo, self).form_valid(form) 

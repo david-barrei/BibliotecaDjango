@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_delete
+
 from applications.libro.models import Libro
 from .managers import PrestamoManager
 from applications.autor.models import Persona
@@ -30,4 +32,9 @@ class Prestamo(models.Model):
    def __str__(self):
        return  str(self.id) + '-' + self.libro.titulo
    
-   
+
+def update_libro_stok(sender, instance, **kwargs): #si se devuelve el libro suma el stock
+    instance.libro.stock = instance.libro.stock + 1
+    instance.libro.save()
+
+post_delete.connect(update_libro_stok, sender = Prestamo)
