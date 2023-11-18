@@ -37,4 +37,4 @@ def update_libro_stok(sender, instance, **kwargs): #si se devuelve el libro suma
     instance.libro.stock = instance.libro.stock + 1
     instance.libro.save()
 
-post_delete.connect(update_libro_stok, sender = Prestamo)
+post_delete.connect(update_libro_stok, sender = Prestamo)#Elimina el libro
